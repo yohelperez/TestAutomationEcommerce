@@ -1,8 +1,9 @@
 package co.edu.udea.certificacion.calidad.stepdefinition;
 
 
+import co.edu.udea.certificacion.calidad.questions.ValidationAddCart;
 import co.edu.udea.certificacion.calidad.questions.ValidationLandingPage;
-import co.edu.udea.certificacion.calidad.questions.ValidationLogin;
+import co.edu.udea.certificacion.calidad.tasks.AddTo;
 import co.edu.udea.certificacion.calidad.tasks.EnterThe;
 import co.edu.udea.certificacion.calidad.tasks.FindThe;
 import co.edu.udea.certificacion.calidad.tasks.OpenThe;
@@ -24,7 +25,7 @@ import static com.google.common.base.Predicates.equalTo;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 @RunWith(Cucumber.class)
-public class TestLogin {
+public class AgregarCarrito {
 
     @Managed(driver = "chrome")
     public WebDriver driver;
@@ -42,19 +43,21 @@ public class TestLogin {
         usuario.can(BrowseTheWeb.with(driver));
     }
 
-    @Given("que me encuentro en la pagina web")
-    public void queMeEncuentroPaginaWeb(){
+    @Given("que me encuentro logueado y en la pagina principal")
+    public void queMeEncuentroLogueado(){
         usuario.attemptsTo(OpenThe.Browser(new UsuarioPage()));
-    }
-
-    @When("doy click en login e ingreso mis credenciales")
-    public void doyClickIngresoCredenciales(){
         usuario.attemptsTo(EnterThe.LoginPage());
+
     }
 
-    @Then("puedo ver la seccion de usuario")
-    public void puedoVerSeccionUsuario(){
+    @When("doy click en agregar al carrito")
+    public void doyClickEnAgregarCarrito(){
+        usuario.attemptsTo(AddTo.ecommerceLandingPage());
+    }
+
+    @Then("se actualiza la lista de items en el carrito")
+    public void puedoVerInformacion(){
         //todo
-        usuario.should(seeThat(ValidationLogin.theEcommerceLoginPage(), equalTo(true)));
+        usuario.should(seeThat(ValidationAddCart.theCartAdded(), equalTo(true)));
     }
 }
