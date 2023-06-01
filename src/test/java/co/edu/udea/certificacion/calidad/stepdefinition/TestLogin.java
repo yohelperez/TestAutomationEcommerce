@@ -2,6 +2,8 @@ package co.edu.udea.certificacion.calidad.stepdefinition;
 
 
 import co.edu.udea.certificacion.calidad.questions.ValidationLandingPage;
+import co.edu.udea.certificacion.calidad.questions.ValidationLogin;
+import co.edu.udea.certificacion.calidad.tasks.EnterThe;
 import co.edu.udea.certificacion.calidad.tasks.FindThe;
 import co.edu.udea.certificacion.calidad.tasks.OpenThe;
 import co.edu.udea.certificacion.calidad.userinterfaces.UsuarioPage;
@@ -22,7 +24,7 @@ import static com.google.common.base.Predicates.equalTo;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 @RunWith(Cucumber.class)
-public class ConsultaWebpage {
+public class TestLogin {
 
     @Managed(driver = "chrome")
     public WebDriver driver;
@@ -40,19 +42,19 @@ public class ConsultaWebpage {
         usuario.can(BrowseTheWeb.with(driver));
     }
 
-    @Given("que me encuentro en la pagina principal de google")
-    public void queMeEncuentroPaginaUdea(){
+    @Given("que me encuentro en la pagina web")
+    public void queMeEncuentroPaginaWeb(){
         usuario.attemptsTo(OpenThe.Browser(new UsuarioPage()));
     }
 
-    @When("busco el link del website")
-    public void buscoElIdDeUnProfesor(){
-        usuario.attemptsTo(FindThe.ecommercePage());
+    @When("doy click en login e ingreso mis credenciales")
+    public void doyClickIngresoCredenciales(){
+        usuario.attemptsTo(EnterThe.LoginPage());
     }
 
-    @Then("puedo ver los items del sitio")
-    public void puedoVerInformacion(){
+    @Then("puedo ver la seccion de usuario")
+    public void puedoVerSeccionUsuario(){
         //todo
-        usuario.should(seeThat(ValidationLandingPage.theEcommercePage(), equalTo(true)));
+        usuario.should(seeThat(ValidationLogin.theEcommerceLoginPage(), equalTo(true)));
     }
 }
