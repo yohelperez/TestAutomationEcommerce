@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/consulta_webpage.feature",
+        features = "src/test/resources/features/editar_productos_webpage.feature",
         glue = "co.edu.udea.certificacion.calidad.stepdefinition",
         snippets = SnippetType.CAMELCASE
 )
