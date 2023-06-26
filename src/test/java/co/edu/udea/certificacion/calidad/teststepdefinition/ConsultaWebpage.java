@@ -1,4 +1,4 @@
-package co.edu.udea.certificacion.calidad.stepdefinition;
+package co.edu.udea.certificacion.calidad.teststepdefinition;
 
 
 import co.edu.udea.certificacion.calidad.questions.ValidationLandingPage;

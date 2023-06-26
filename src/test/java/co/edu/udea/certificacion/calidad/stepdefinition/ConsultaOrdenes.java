@@ -1,4 +1,4 @@
-package co.edu.udea.certificacion.calidad.teststepdefinition;
+package co.edu.udea.certificacion.calidad.stepdefinition;
 
 
 import co.edu.udea.certificacion.calidad.questions.ValidationAddCart;
